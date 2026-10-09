@@ -15,8 +15,8 @@ FIRM = {
     "name": "GC Legal",
     "legal_name": "Gómez & Cadena Abogados",
     "slogan": "Derecho a la solución",
-    "whatsapp": "573000000000",           # ← reemplazar con el número real
-    "whatsapp_display": "+57 300 000 0000",
+    "whatsapp": "573113973304",
+    "whatsapp_display": "+57 311 397 3304",
     "email": "contacto@gclegal.co",       # ← confirmar
     "instagram": "https://www.instagram.com/gclegal.co",
     "instagram_handle": "@gclegal.co",
