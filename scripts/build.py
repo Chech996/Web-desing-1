@@ -16,7 +16,7 @@ from urllib.parse import quote
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import (  # noqa: E402
-    CATEGORIES, FIRM, HOW_DETAILED, HOW_STEPS, PROCESS_FAQS, SERVICE_BY_SLUG,
+    BETA, CATEGORIES, FIRM, HOW_DETAILED, HOW_STEPS, PROCESS_FAQS, SERVICE_BY_SLUG,
     SERVICES, VALUE_PROPS, VALUES, WHY,
 )
 
@@ -302,6 +302,9 @@ THEME_BOOT = ("(function(){try{var t=localStorage.getItem('gc-theme');"
               "if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();")
 
 
+ROBOTS_META = '\n  <meta name="robots" content="noindex, nofollow">' if BETA else ""
+
+
 def layout(pg, title, desc, body, section="", schema=None):
     ld = ""
     for block in (schema or []):
@@ -312,7 +315,7 @@ def layout(pg, title, desc, body, section="", schema=None):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{e(title)}</title>
-  <meta name="description" content="{e(desc)}">
+  <meta name="description" content="{e(desc)}">{ROBOTS_META}
   <link rel="canonical" href="{pg.abs()}">
   <meta name="theme-color" content="#1a2744">
   <meta property="og:type" content="website">
@@ -1230,7 +1233,15 @@ def sitemap(pages):
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
     with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
-        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {FIRM['site_url']}/sitemap.xml\n")
+        if BETA:
+            f.write("User-agent: *\nDisallow: /\n")
+        else:
+            f.write(f"User-agent: *\nAllow: /\n\nSitemap: {FIRM['site_url']}/sitemap.xml\n")
+    # GitHub Pages: dominio propio y sin procesamiento de Jekyll
+    domain = FIRM["site_url"].split("://", 1)[1].strip("/")
+    with open(os.path.join(ROOT, "CNAME"), "w", encoding="utf-8") as f:
+        f.write(domain + "\n")
+    open(os.path.join(ROOT, ".nojekyll"), "w").close()
 
 
 def main():

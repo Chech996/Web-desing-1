@@ -29,6 +29,11 @@ scripts/build.py                   Generador de las páginas
 - `site_url`: dominio definitivo (canonical, Open Graph, schema.org y `sitemap.xml`)
 - Revisar con el equipo los textos de Términos y Política de privacidad.
 
+## Publicación (beta) en GitHub Pages
+
+- El dominio `gomezcadena.com` apunta a GitHub Pages desde los DNS de Hostinger; el archivo `CNAME` lo genera el build.
+- `BETA = True` en `scripts/content.py` agrega `noindex` y bloquea buscadores en `robots.txt`. Ponerlo en `False` al lanzar la versión real.
+
 ## Notas
 
 - El formulario de contacto no requiere servidor: valida los datos y abre WhatsApp (o el correo) con el mensaje prellenado.

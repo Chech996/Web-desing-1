@@ -4,6 +4,10 @@ Todo el texto de los servicios vive aquí para que el equipo pueda editarlo
 sin tocar las plantillas. Después de editar, ejecuta:  python3 scripts/build.py
 """
 
+# Versión beta: evita que los buscadores indexen el sitio mientras tenga datos
+# de prueba. Cambiar a False al lanzar la versión real.
+BETA = True
+
 # --------------------------------------------------------------------------
 # Datos de contacto (placeholders — reemplazar por los reales)
 # --------------------------------------------------------------------------
@@ -21,7 +25,7 @@ FIRM = {
     "region": "Antioquia",
     "country": "Colombia",
     "hours": "Lunes a viernes, 8:00 a.m. – 6:00 p.m.",
-    "site_url": "https://gclegal.co",     # ← dominio definitivo (canonical, Open Graph, schema)
+    "site_url": "https://gomezcadena.com",  # ← dominio (canonical, Open Graph, schema, sitemap)
 }
 
 CATEGORIES = {
