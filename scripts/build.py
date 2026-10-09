@@ -328,7 +328,7 @@ def footer(pg):
 
 FAVICON = ("data:image/svg+xml,"
            + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -22 122 122">'
-                   '<style>g{stroke:#0d2e65}@media (prefers-color-scheme:dark){g{stroke:#ff7a2b}}</style>'
+                   '<style>g{stroke:#041429}@media (prefers-color-scheme:dark){g{stroke:#c9d3e3}}</style>'
                    '<g fill="none" stroke-width="7" stroke-linejoin="miter" stroke-linecap="square">'
                    + MARK_PATHS + '</g></svg>'))
 
@@ -351,7 +351,7 @@ def layout(pg, title, desc, body, section="", schema=None):
   <title>{e(title)}</title>
   <meta name="description" content="{e(desc)}">{ROBOTS_META}
   <link rel="canonical" href="{pg.abs()}">
-  <meta name="theme-color" content="#0d2e65">
+  <meta name="theme-color" content="#041429">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
   <meta property="og:site_name" content="GC Legal — Gómez &amp; Cadena Abogados">
