@@ -28,6 +28,7 @@
   --cta-fg: #ffffff;
   --cta-muted: rgba(255, 255, 255, 0.76);
   --on-dark-accent: #c9d3e3;
+  --gold: #b8862b;            /* toques sutiles: filetes, ornamento, números */
   --header-bg: rgba(255, 255, 255, 0.9);
   --focus: #041429;
   --success: #1f7a4d;
@@ -71,6 +72,7 @@
     --cta-fg: #ffffff;
     --cta-muted: rgba(255, 255, 255, 0.76);
     --on-dark-accent: #c9d3e3;
+    --gold: #d4a03a;
     --header-bg: rgba(3, 13, 28, 0.88);
     --focus: #c9d3e3;
     --success: #5cc795;
@@ -103,6 +105,7 @@
   --cta-fg: #ffffff;
   --cta-muted: rgba(255, 255, 255, 0.76);
   --on-dark-accent: #c9d3e3;
+  --gold: #d4a03a;
   --header-bg: rgba(3, 13, 28, 0.88);
   --focus: #c9d3e3;
   --success: #5cc795;
@@ -1339,3 +1342,14 @@ body.drawer-open .wa-float { display: none; }
 .team-card h3 { font-size: 1.02rem; color: #ffffff; }
 .team-card p { margin-top: 4px; font-size: 0.86rem; color: var(--on-dark-accent); font-weight: 600; letter-spacing: 0.04em; }
 @media (max-width: 380px) { .team { grid-template-columns: 1fr; } }
+
+/* ---------- Toques dorados (pocos y sutiles) ---------- */
+.eyebrow::before,
+.section-navy .eyebrow::before,
+.cta-box .eyebrow::before { background: var(--gold); }
+.ornament { color: var(--gold); }
+.brand-sig .ornament { color: var(--gold); }
+.step-num::before { color: var(--gold); }
+.stat-row .stat { border-top-color: var(--gold); }
+.modality { border-top-color: #b8862b; }
+.team-card div { border-top-color: #d4a03a; }
