@@ -16,8 +16,8 @@ from urllib.parse import quote
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import (  # noqa: E402
-    BETA, CATEGORIES, FIRM, HOW_DETAILED, HOW_STEPS, PROCESS_FAQS, SERVICE_BY_SLUG,
-    SERVICES, VALUE_PROPS, VALUES, WHY,
+    ABOUT_INTRO, BETA, CATEGORIES, FIRM, HOW_DETAILED, HOW_STEPS, MODALITIES, PRACTICE_AREAS,
+    PROCESS_FAQS, SERVICE_BY_SLUG, SERVICES, STATS, TEAM, VALUE_PROPS, VALUES, WHY,
 )
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -57,6 +57,8 @@ _P = {
     "calendar": '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
     "help": '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
     "target": '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    "phone": '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    "award": '<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>',
     "repeat": '<path d="m17 1 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 23-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
 }
 _FILLED = {
@@ -152,9 +154,8 @@ def mark(cls="", stroke=2.4):
 
 
 ORNAMENT = ('<svg class="ornament" viewBox="0 0 160 12" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">'
-            '<path d="M2 6H64M96 6H158" stroke-width="1"/>'
-            '<path d="M80 1.5 84.5 6 80 10.5 75.5 6Z" stroke-width="1.1"/>'
-            '<path d="M75.5 6c-3-3.5-6-3.5-8 0 2 3.5 5 3.5 8 0M84.5 6c3-3.5 6-3.5 8 0-2 3.5-5 3.5-8 0" stroke-width="1"/>'
+            '<path d="M2 6H62M98 6H158" stroke-width="1"/>'
+            '<path d="M80 2 84 6 80 10 76 6ZM70 3 73 6 70 9 67 6ZM90 3 93 6 90 9 87 6Z" fill="currentColor" stroke="none"/>'
             '</svg>')
 
 
@@ -282,7 +283,7 @@ def footer(pg):
         <div class="footer-brand">
           <a href="{pg.url("")}" aria-label="Gómez &amp; Cadena Abogados — Inicio">{brand_signature("is-footer")}</a>
           <p class="slogan">«{FIRM["slogan"]}»</p>
-          <p>Servicios jurídicos con tarifas fijas para empresas y personas, desde Rionegro para toda Colombia.</p>
+          <p>Servicios jurídicos con tarifas fijas para empresas y personas, con sedes en {FIRM["offices"]} y atención en toda Colombia.</p>
           <div class="social">
             <a href="{FIRM["instagram"]}" target="_blank" rel="noopener" aria-label="Instagram de GC Legal">{icon("instagram")}</a>
             <a href="{FIRM["linkedin"]}" target="_blank" rel="noopener" aria-label="LinkedIn de GC Legal">{icon("linkedin")}</a>
@@ -308,13 +309,14 @@ def footer(pg):
           <ul class="footer-links footer-contact">
             <li>{icon("whatsapp")}<a href="{e(wa_link())}" target="_blank" rel="noopener">{FIRM["whatsapp_display"]}</a></li>
             <li>{icon("mail")}<a href="mailto:{FIRM["email"]}">{FIRM["email"]}</a></li>
-            <li>{icon("pin")}<span>{FIRM["city"]}, {FIRM["region"]}, {FIRM["country"]}</span></li>
+            <li>{icon("phone")}<a href="tel:+{FIRM["phone2"]}">{FIRM["phone2_display"]}</a></li>
+            <li>{icon("pin")}<span>{FIRM["offices"]}</span></li>
             <li>{icon("clock")}<span>{FIRM["hours"]}</span></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© <span data-year>2026</span> GC Legal — Gómez &amp; Cadena Abogados. Todos los derechos reservados.</p>
+        <p>© <span data-year>2026</span> {FIRM["legal_entity"]} — Gómez &amp; Cadena Abogados. Todos los derechos reservados.</p>
         <p><em>Derecho a la solución.</em></p>
       </div>
     </div>
@@ -326,7 +328,7 @@ def footer(pg):
 
 FAVICON = ("data:image/svg+xml,"
            + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -22 122 122">'
-                   '<style>g{stroke:#1a2744}@media (prefers-color-scheme:dark){g{stroke:#e3b65e}}</style>'
+                   '<style>g{stroke:#0d2e65}@media (prefers-color-scheme:dark){g{stroke:#ff7a2b}}</style>'
                    '<g fill="none" stroke-width="7" stroke-linejoin="miter" stroke-linecap="square">'
                    + MARK_PATHS + '</g></svg>'))
 
@@ -349,7 +351,7 @@ def layout(pg, title, desc, body, section="", schema=None):
   <title>{e(title)}</title>
   <meta name="description" content="{e(desc)}">{ROBOTS_META}
   <link rel="canonical" href="{pg.abs()}">
-  <meta name="theme-color" content="#1a2744">
+  <meta name="theme-color" content="#0d2e65">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
   <meta property="og:site_name" content="GC Legal — Gómez &amp; Cadena Abogados">
@@ -402,6 +404,34 @@ def service_card(pg, s, wide=False, heading="h3"):
           {extra}
           <span class="link-arrow" aria-hidden="true">Conoce más {icon("arrow")}</span>
         </article>'''
+
+
+def stats_row():
+    return '<div class="stat-row">' + "".join(
+        f'<div class="stat"><strong>{e(n)}</strong><span>{e(t)}</span></div>' for n, t in STATS) + "</div>"
+
+
+def modalities_band(pg, heading="h2"):
+    cards = "".join(f'''
+          <article class="card modality">
+            {mark("modality-mark", 2.6)}
+            <span class="card-icon">{icon(i)}</span>
+            <h3>{e(t)}</h3>
+            <p>{e(d)}</p>
+          </article>''' for i, t, d in MODALITIES)
+    return f'''
+    <section class="section section-navy" aria-labelledby="modalidades-title">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Cómo puedes contratarnos</p>
+          <{heading} id="modalidades-title">Modalidades de servicio</{heading}>
+          <p>Elige la forma de trabajo que mejor se adapta a ti o a tu empresa. En todas, conoces la tarifa antes de empezar.</p>
+        </div>
+        <div class="grid grid-3">{cards}
+        </div>
+        <div class="section-foot">{wa_btn("Cotizar una modalidad", "las modalidades de servicio (membresía legal, abogado in house o asesoría legal)", cls="btn btn-light", size="btn-lg")}</div>
+      </div>
+    </section>'''
 
 
 def cta_card(pg, title="¿No encuentras tu caso?", text="Cuéntanos tu situación y te decimos cómo podemos ayudarte. La consulta inicial no tiene costo."):
@@ -498,11 +528,12 @@ def org_schema():
         "@id": FIRM["site_url"] + "/#firma",
         "name": "GC Legal — Gómez & Cadena Abogados",
         "alternateName": "GC Legal",
+        "legalName": FIRM["legal_entity"],
         "slogan": FIRM["slogan"],
         "description": "Firma colombiana de servicios jurídicos para empresas y personas con tarifas fijas, atención digital y presencial.",
         "url": FIRM["site_url"] + "/",
         "email": FIRM["email"],
-        "telephone": "+" + FIRM["whatsapp"],
+        "telephone": ["+" + FIRM["whatsapp"], "+" + FIRM["phone2"]],
         "address": {"@type": "PostalAddress", "addressLocality": FIRM["city"],
                     "addressRegion": FIRM["region"], "addressCountry": "CO"},
         "areaServed": {"@type": "Country", "name": "Colombia"},
@@ -550,7 +581,7 @@ def page_home():
       {mark("watermark watermark-hero", 1.6)}
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Firma de abogados · Rionegro, Antioquia</p>
+          <p class="eyebrow">Firma de abogados · Medellín · Rionegro · Bogotá</p>
           <h1 id="hero-title">Derecho a la <em>solución</em></h1>
           <p class="hero-sub">Servicios jurídicos con tarifas fijas, procesos claros y la asesoría de abogados expertos. Sin sorpresas, sin letra pequeña.</p>
           <div class="hero-ctas">
@@ -587,6 +618,7 @@ def page_home():
         </div>
         <div class="grid grid-3">{values}
         </div>
+        {stats_row()}
       </div>
     </section>
 
@@ -602,6 +634,8 @@ def page_home():
         <div class="section-foot"><a class="btn btn-outline btn-lg" href="{pg.url("servicios")}">Ver todos los servicios {icon("arrow")}</a></div>
       </div>
     </section>
+
+{modalities_band(pg)}
 
     <section class="section section-alt" aria-labelledby="como-title">
       <div class="container">
@@ -633,7 +667,7 @@ def page_home():
     -->
 {cta_band(pg)}'''
     return pg, layout(pg, "GC Legal — Gómez & Cadena Abogados | Derecho a la solución",
-                      "Firma de abogados en Rionegro, Antioquia, con tarifas fijas para empresas y personas: constitución de SAS, contratos, marcas, protección de datos, familia y tutelas. Atención digital en toda Colombia.",
+                      "Firma de abogados en Medellín, Rionegro y Bogotá con tarifas fijas para empresas y personas: constitución de SAS, contratos, marcas, protección de datos, familia y tutelas. Atención digital en toda Colombia.",
                       body, "inicio", [org_schema()])
 
 
@@ -721,7 +755,7 @@ def page_service(s):
             <ul class="summary-list">
               <li>{icon("tag")}<div><strong>Honorarios</strong><span>Tarifa fija, cotizada antes de empezar</span></div></li>
               <li>{icon("clock")}<div><strong>{e(s.get("delivery_label", "Entrega estimada"))}</strong><span>{e(s["delivery"])}</span></div></li>
-              <li>{icon("laptop")}<div><strong>Modalidad</strong><span>100 % digital o presencial en Rionegro</span></div></li>
+              <li>{icon("laptop")}<div><strong>Modalidad</strong><span>100 % digital o presencial en Medellín, Rionegro o Bogotá</span></div></li>
               <li>{icon("target")}<div><strong>Ideal para</strong><span>{e(s["ideal"])}</span></div></li>
             </ul>
             {wa_btn("Cotizar por WhatsApp", s["wa"], cls="btn btn-primary btn-block")}
@@ -987,6 +1021,7 @@ def page_how():
         </aside>
       </div>
     </section>
+{modalities_band(pg)}
 {faq_block(PROCESS_FAQS, title="Preguntas sobre el proceso", lead="Todo lo que debes saber antes de trabajar con nosotros.", pg=pg).replace('class="section"', 'class="section section-alt"', 1)}
 {cta_band(pg, "¿Empezamos?", "Escríbenos por WhatsApp, cuéntanos tu caso y recibe tu propuesta con tarifa fija en menos de 24 horas.")}'''
     return pg, layout(pg, "Cómo funciona: proceso y tarifas fijas | GC Legal",
@@ -1005,6 +1040,12 @@ def page_about():
         ("Servicios empaquetados", "Alcances definidos y entregables concretos, como un producto: sabes exactamente qué recibes."),
         ("Abogados que responden", "Respuesta en menos de 24 horas hábiles por el canal que prefieras."),
     ]
+    team = "".join(f'''
+          <li class="team-card">
+            <img src="{pg.asset("img/team/" + m["photo"])}" alt="{e(m["name"])}, {e(m["role"].lower())} de Gómez &amp; Cadena Abogados" width="480" height="480" loading="lazy">
+            <div><h3>{e(m["name"])}</h3><p>{e(m["role"])}</p></div>
+          </li>''' for m in TEAM)
+    chips = "".join(f'<span class="chip">{e(a)}</span>' for a in PRACTICE_AREAS)
     diff_html = "".join(f'<li><span class="check">{icon("check")}</span><span>{t}<small>{d}</small></span></li>' for t, d in diffs)
     body = f'''
     <section class="page-hero">
@@ -1012,7 +1053,7 @@ def page_about():
         {breadcrumb(pg, trail)}
         <p class="eyebrow" style="margin-top:28px">Nosotros</p>
         <h1>Sobre GC Legal</h1>
-        <p class="lead">Somos Gómez &amp; Cadena Abogados, una firma colombiana de servicios jurídicos con vocación empresarial, con sede en Rionegro, Antioquia, y clientes en todo el país.</p>
+        <p class="lead">Somos Gómez &amp; Cadena Abogados ({FIRM["legal_entity"]}): abogados cercanos, ágiles y costoeficientes, con sedes en {FIRM["offices"]} y clientes en todo el país.</p>
       </div>
     </section>
 
@@ -1027,16 +1068,12 @@ def page_about():
           </div>
         </div>
         <div class="prose" style="color:var(--fg-muted);font-size:1.06rem">
-          <p>GC Legal nació de una convicción sencilla: muchas personas y empresas en Colombia evitan buscar un abogado porque no saben cuánto les va a costar, cuánto se va a demorar o si van a entender lo que les dicen. Esa incertidumbre termina saliendo cara.</p>
-          <p>Nuestra misión es hacer que la asesoría jurídica de calidad sea <strong>clara, accesible y predecible</strong>. Por eso trabajamos con tarifas fijas, procesos definidos y herramientas digitales, sin renunciar al rigor y al criterio que exige cada caso. Así entendemos nuestro lema: <em>Derecho a la solución</em>.</p>
+          {"".join(f"<p>{p}</p>" for p in ABOUT_INTRO)}
+          <p>Nuestra misión es hacer que la asesoría jurídica de calidad sea <strong>clara, accesible y predecible</strong>. Así entendemos nuestro lema: <em>Derecho a la solución</em>.</p>
         </div>
       </div>
       <div class="container">
-        <div class="stat-row">
-          <div class="stat"><strong>Tarifa fija</strong><span>En todos nuestros servicios empaquetados</span></div>
-          <div class="stat"><strong>&lt; 24 horas</strong><span>Tiempo de respuesta a tu consulta</span></div>
-          <div class="stat"><strong>Toda Colombia</strong><span>Atención digital y presencial en Rionegro</span></div>
-        </div>
+        {stats_row()}
       </div>
     </section>
 
@@ -1052,7 +1089,19 @@ def page_about():
       </div>
     </section>
 
-    <section class="section" aria-labelledby="valores-title">
+    <section class="section" aria-labelledby="equipo-title">
+      <div class="container split">
+        <div class="prose">
+          <p class="eyebrow">Fundadores</p>
+          <h2 id="equipo-title" style="margin-top:14px">Conoce al equipo</h2>
+          <p>Contamos con un equipo jurídico de profesionales especializados en derecho privado y público, con el respaldo directo de nuestros socios fundadores.</p>
+          <p>Nuestra estructura combina la experiencia académica y la práctica profesional con un modelo de trabajo ágil y costoeficiente, para darte una asesoría integral y de alto nivel.</p>
+        </div>
+        <ul class="team">{team}</ul>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="valores-title">
       <div class="container">
         <div class="section-head center">
           <p class="eyebrow">Valores</p>
@@ -1062,7 +1111,7 @@ def page_about():
       </div>
     </section>
 
-    <section class="section section-alt" aria-labelledby="areas-title">
+    <section class="section" aria-labelledby="areas-title">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Áreas de práctica</p>
@@ -1070,11 +1119,14 @@ def page_about():
           <p>Servicios jurídicos para empresas y personas, con tarifa fija y entregables claros.</p>
         </div>
         <ul class="areas">{areas}</ul>
+        <h3 style="margin-top:44px">Otras áreas en las que te acompañamos</h3>
+        <p style="margin-top:8px;color:var(--fg-muted)">Gracias a nuestros abogados asociados y aliados estratégicos, también atendemos:</p>
+        <div class="chips">{chips}</div>
       </div>
     </section>
 {cta_band(pg, "Conversemos sobre tu caso", "La primera consulta es gratuita. Escríbenos y recibe una propuesta clara en menos de 24 horas.")}'''
-    return pg, layout(pg, "Sobre GC Legal — Gómez & Cadena Abogados | Rionegro, Antioquia",
-                      "Conoce GC Legal: firma colombiana de servicios jurídicos con vocación empresarial, tarifas fijas y atención digital y presencial desde Rionegro, Antioquia.",
+    return pg, layout(pg, "Sobre GC Legal — Gómez & Cadena Abogados | Medellín, Rionegro y Bogotá",
+                      "Conoce a Gómez & Cadena Abogados (GC Legal S.A.S.): abogados cercanos, ágiles y costoeficientes, con tarifas fijas y sedes en Medellín, Rionegro y Bogotá.",
                       body, "nosotros", [breadcrumb_schema(trail), org_schema()])
 
 
@@ -1156,6 +1208,10 @@ def page_contact():
             </div>
           </div>
           <div class="card info-item">
+            <span class="card-icon">{icon("phone")}</span>
+            <div><h3>Teléfonos</h3><a class="val" href="tel:+{FIRM["whatsapp"]}">{FIRM["whatsapp_display"]}</a><a class="val" href="tel:+{FIRM["phone2"]}">{FIRM["phone2_display"]}</a><small>Llámanos en horario de atención.</small></div>
+          </div>
+          <div class="card info-item">
             <span class="card-icon">{icon("mail")}</span>
             <div><h3>Correo</h3><a class="val" href="mailto:{FIRM["email"]}">{FIRM["email"]}</a><small>Para enviar documentos o consultas detalladas.</small></div>
           </div>
@@ -1165,14 +1221,14 @@ def page_contact():
           </div>
           <div class="card info-item">
             <span class="card-icon">{icon("pin")}</span>
-            <div><h3>Ubicación</h3><p>{FIRM["city"]}, {FIRM["region"]}</p><small>Atención presencial con cita previa. Atención digital en toda Colombia.</small></div>
+            <div><h3>Sedes</h3><p>{FIRM["offices"]}</p><small>Atención presencial con cita previa. Atención digital en toda Colombia.</small></div>
           </div>
         </div>
       </div>
     </section>
 {cta_band(pg, "También puedes escribirnos directamente por WhatsApp", "Es la forma más rápida de recibir tu cotización. Te respondemos en menos de 24 horas hábiles.", eyebrow="Respuesta rápida")}'''
     return pg, layout(pg, "Contacto — Consulta gratuita | GC Legal",
-                      "Contacta a GC Legal por WhatsApp, correo o formulario. Consulta gratuita y cotización con tarifa fija en menos de 24 horas. Rionegro, Antioquia, y toda Colombia.",
+                      "Contacta a GC Legal por WhatsApp, correo o formulario. Consulta gratuita y cotización con tarifa fija en menos de 24 horas. Sedes en Medellín, Rionegro y Bogotá.",
                       body, "contacto", [breadcrumb_schema(trail), org_schema()])
 
 
@@ -1183,7 +1239,7 @@ def page_legal(kind):
         desc = "Términos y condiciones de uso del sitio web de GC Legal — Gómez & Cadena Abogados."
         content = f'''
           <h2>1. Información general</h2>
-          <p>Este sitio web es operado por <strong>GC Legal — Gómez &amp; Cadena Abogados</strong>, con domicilio en {FIRM["city"]}, {FIRM["region"]}, Colombia. Al navegar en él aceptas estos términos.</p>
+          <p>Este sitio web es operado por <strong>{FIRM["legal_entity"]} (Gómez &amp; Cadena Abogados)</strong>, con domicilio en {FIRM["city"]}, {FIRM["region"]}, Colombia. Al navegar en él aceptas estos términos.</p>
           <h2>2. Carácter informativo del contenido</h2>
           <p>La información publicada tiene fines exclusivamente informativos y generales. <strong>No constituye asesoría jurídica</strong> ni crea una relación abogado-cliente. Cada caso tiene particularidades que deben analizarse de forma individual.</p>
           <p>Procuramos mantener el contenido actualizado, pero las normas y la jurisprudencia cambian. Antes de tomar decisiones, consulta tu situación con un abogado.</p>
@@ -1209,7 +1265,7 @@ def page_legal(kind):
         desc = "Política de tratamiento de datos personales de GC Legal conforme a la Ley 1581 de 2012: finalidades, derechos de los titulares y canales de atención."
         content = f'''
           <h2>1. Responsable del tratamiento</h2>
-          <p><strong>GC Legal — Gómez &amp; Cadena Abogados</strong>, con domicilio en {FIRM["city"]}, {FIRM["region"]}, Colombia. Correo: <a class="text-link" href="mailto:{FIRM["email"]}">{FIRM["email"]}</a>. WhatsApp: {FIRM["whatsapp_display"]}.</p>
+          <p><strong>{FIRM["legal_entity"]} (Gómez &amp; Cadena Abogados)</strong>, con domicilio en {FIRM["city"]}, {FIRM["region"]}, Colombia. Correo: <a class="text-link" href="mailto:{FIRM["email"]}">{FIRM["email"]}</a>. WhatsApp: {FIRM["whatsapp_display"]}.</p>
           <h2>2. Marco legal</h2>
           <p>Esta política se adopta en cumplimiento de la Ley 1581 de 2012, el Decreto 1377 de 2013 (compilado en el Decreto 1074 de 2015) y demás normas que los complementen o modifiquen.</p>
           <h2>3. Datos que recogemos</h2>

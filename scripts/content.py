@@ -21,6 +21,10 @@ FIRM = {
     "instagram": "https://www.instagram.com/gclegal.co",
     "instagram_handle": "@gclegal.co",
     "linkedin": "https://www.linkedin.com/company/gclegal",
+    "legal_entity": "GC Legal S.A.S.",
+    "phone2": "573226176058",
+    "phone2_display": "+57 322 617 6058",
+    "offices": "Medellín, Rionegro y Bogotá",
     "city": "Rionegro",
     "region": "Antioquia",
     "country": "Colombia",
@@ -35,7 +39,7 @@ CATEGORIES = {
         "short": "Para empresas",
         "lead": "Desde el día en que constituyes tu sociedad hasta la operación diaria: contratos, marcas, datos personales y documentos corporativos con tarifa fija y un abogado que entiende tu negocio.",
         "meta_title": "Servicios jurídicos para empresas en Colombia | GC Legal",
-        "meta_desc": "Constitución de SAS, contratos comerciales, registro de marcas, protección de datos, gobierno corporativo y asesoría mensual. Tarifas fijas, atención digital y en Rionegro.",
+        "meta_desc": "Constitución de SAS, contratos comerciales, registro de marcas, protección de datos, gobierno corporativo y asesoría mensual. Tarifas fijas, atención digital y presencial en Medellín, Rionegro y Bogotá.",
         "intro": [
             "Emprender y crecer en Colombia implica cumplir con Cámara de Comercio, DIAN, Superintendencias y un sinfín de reglas que cambian. Lo sabemos porque acompañamos empresas todos los días.",
             "Por eso empaquetamos los servicios jurídicos que más necesita una empresa con alcance definido, plazo estimado y tarifa fija. Tú te enfocas en tu negocio; nosotros en que esté bien protegido.",
@@ -46,11 +50,11 @@ CATEGORIES = {
         "title": "Servicios jurídicos para personas",
         "short": "Para personas",
         "lead": "Situaciones familiares y derechos fundamentales que necesitan una respuesta seria, rápida y humana. Te explicamos tus opciones en palabras claras y te acompañamos hasta el final.",
-        "meta_title": "Abogados de familia y tutelas en Rionegro, Antioquia | GC Legal",
+        "meta_title": "Abogados de familia y tutelas en Medellín y Rionegro | GC Legal",
         "meta_desc": "Divorcios, liquidación de sociedad conyugal, custodia, alimentos y acciones de tutela. Asesoría clara, reservada y con cotización previa. Atención digital y presencial.",
         "intro": [
             "Cuando un asunto legal toca tu familia o tus derechos, lo último que necesitas es incertidumbre. Te decimos desde el principio qué camino tienes, cuánto puede tardar y cuánto cuesta.",
-            "Tratamos cada caso con reserva y respeto. Puedes consultarnos por WhatsApp desde cualquier lugar de Colombia o reunirte con nosotros en Rionegro.",
+            "Tratamos cada caso con reserva y respeto. Puedes consultarnos por WhatsApp desde cualquier lugar de Colombia o reunirte con nosotros en Medellín, Rionegro o Bogotá.",
         ],
     },
 }
@@ -108,7 +112,7 @@ SERVICES = [
             ("¿Cuánto tiempo toma el proceso?",
              ["Normalmente entre 5 y 10 días hábiles desde que tenemos la información y las firmas. La mayor parte del tiempo depende de la Cámara de Comercio y de la asignación del NIT por parte de la DIAN."]),
             ("¿Necesito ir presencialmente a alguna parte?",
-             ["No. Todo el proceso se puede hacer de forma digital: firmas electrónicas, radicación virtual y entrega de documentos por correo. Si prefieres firmar en persona, te recibimos en Rionegro."]),
+             ["No. Todo el proceso se puede hacer de forma digital: firmas electrónicas, radicación virtual y entrega de documentos por correo. Si prefieres firmar en persona, te recibimos en Medellín, Rionegro o Bogotá."]),
             ("¿Qué documentos necesito para empezar?",
              ["Copia del documento de identidad de cada accionista y del representante legal, el nombre que quieres para la empresa (con dos o tres alternativas), una descripción de la actividad, el capital y la dirección del domicilio. Si un accionista es una empresa, también su certificado de existencia y representación."]),
             ("¿Puedo tener socios extranjeros?",
@@ -243,6 +247,8 @@ SERVICES = [
              ["Escríbenos por WhatsApp indicando que es urgente. Los clientes con plan tienen prioridad en la atención y, si el asunto requiere trabajo adicional, te decimos el costo antes de hacerlo."]),
             ("¿En qué se diferencia de contratar un abogado de planta?",
              ["Un abogado interno implica salario, prestaciones sociales, seguridad social y, aun así, una sola persona con una sola especialidad. Con el plan accedes a un equipo con experiencia en distintas áreas, por una fracción del costo y sin cargas laborales."]),
+            ("¿Pueden enviar un abogado a mi oficina?",
+             ["Sí. Con la modalidad <strong>Abogado In House</strong> enviamos un abogado a tu empresa los días que lo necesites, con el respaldo remoto de nuestros socios senior. Tienes la experiencia de una firma al costo de un recurso junior."]),
             ("¿Cubre temas laborales y tributarios?",
              ["Te orientamos en las preguntas laborales y tributarias frecuentes de una empresa. Si el asunto requiere un especialista o un proceso, te lo decimos y lo coordinamos con tarifa preferencial."]),
         ],
@@ -446,8 +452,8 @@ SERVICES = [
         "badge2": "Atención reservada",
         "ideal": "Parejas que quieren divorciarse de mutuo acuerdo, personas que necesitan liquidar bienes o fijar custodia y alimentos.",
         "wa": "derecho de familia",
-        "meta_title": "Abogado de familia en Rionegro: divorcios, custodia y alimentos | GC Legal",
-        "meta_desc": "Divorcio notarial y judicial, liquidación de sociedad conyugal, custodia y cuota de alimentos. Asesoría reservada en Rionegro, Antioquia, y atención digital en toda Colombia.",
+        "meta_title": "Abogado de familia en Medellín y Rionegro: divorcios y custodia | GC Legal",
+        "meta_desc": "Divorcio notarial y judicial, liquidación de sociedad conyugal, custodia y cuota de alimentos. Asesoría reservada en Medellín, Rionegro y Bogotá, y atención digital en toda Colombia.",
         "what_title": "¿Cómo te ayudamos en asuntos de familia?",
         "what": [
             "Las decisiones que tomas en un proceso de familia —cómo se reparten los bienes, con quién viven los hijos, cuánto se aporta para su manutención— te acompañan por años. Tomarlas con información clara marca la diferencia.",
@@ -576,7 +582,7 @@ HOW_STEPS = [
 WHY = [
     ("tag", "Sin cobros por hora", "Nuestros honorarios son fijos y los conoces antes de empezar. Así tomas decisiones con claridad."),
     ("briefcase", "Experiencia empresarial real", "Conocemos el mundo corporativo por dentro. Asesoramos desde la constitución hasta la operación diaria."),
-    ("pin", "Digital cuando quieras, presencial cuando necesites", "Trabaja con nosotros desde cualquier lugar de Colombia, o reúnete en persona en Rionegro."),
+    ("pin", "Digital cuando quieras, presencial cuando necesites", "Trabaja con nosotros desde cualquier lugar de Colombia, o reúnete en persona en Medellín, Rionegro o Bogotá."),
     ("zap", "Respuesta rápida", "Respondemos en menos de 24 horas. Tu tiempo importa tanto como el nuestro."),
 ]
 
@@ -617,7 +623,7 @@ PROCESS_FAQS = [
     ("¿Qué pasa si mi caso necesita más trabajo del cotizado?",
      ["La tarifa fija cubre el alcance acordado. Si en el camino surge algo que no estaba previsto, te lo explicamos y te enviamos una cotización adicional antes de hacer cualquier trabajo extra. Nunca recibirás una cuenta que no hayas aprobado."]),
     ("¿Atienden fuera de Antioquia?",
-     ["Sí. Trabajamos de forma digital con clientes de toda Colombia. Para reuniones presenciales te recibimos en Rionegro, Antioquia."]),
+     ["Sí. Trabajamos de forma digital con clientes de toda Colombia. Para reuniones presenciales te recibimos en nuestras sedes de Medellín, Rionegro y Bogotá."]),
     ("¿Mi información es confidencial?",
      ["Sí. Toda la información que compartes está protegida por el secreto profesional del abogado y la tratamos conforme a la Ley 1581 de 2012 de protección de datos personales."]),
 ]
@@ -628,4 +634,37 @@ VALUES = [
     ("zap", "Eficiencia", "Procesos estandarizados donde se puede y atención a la medida donde se necesita."),
     ("users", "Accesibilidad", "Lenguaje claro, respuesta rápida y abogados que puedes contactar de verdad."),
     ("laptop", "Tecnología", "Firma electrónica, radicación digital y seguimiento en línea de tu caso."),
+]
+
+
+# --------------------------------------------------------------------------
+# Elementos del portafolio de servicios (Oferta de servicios GC Legal S.A.S.)
+# --------------------------------------------------------------------------
+STATS = [
+    ("10+", "Abogados a tu servicio"),
+    ("100+", "Casos exitosos"),
+    ("3", "Sedes: Medellín, Rionegro y Bogotá"),
+]
+
+MODALITIES = [
+    ("repeat", "Membresía legal",
+     "Elige un paquete de servicios legales diseñado para tu empresa o para ti. Pagas un precio claro y recibes lo que necesitas: contratos y asesoría laboral, societaria o familiar, entre otros."),
+    ("briefcase", "Abogado In House",
+     "Enviamos un abogado a tu oficina cuando lo necesites, con el respaldo remoto de nuestros socios senior. Tienes la experiencia de una firma al costo de un recurso junior."),
+    ("chat", "Asesoría legal",
+     "Consulta en línea o agenda una cita presencial: tú eliges. Nuestro modelo híbrido te da agilidad, transparencia y el apoyo de abogados expertos en todo momento."),
+]
+
+ABOUT_INTRO = [
+    "En Gómez &amp; Cadena Abogados nos hemos caracterizado por la cercanía con nuestros clientes. Nuestro propósito es ofrecer un servicio legal <strong>transparente, ágil y oportuno</strong>, con atención personalizada en cada caso.",
+    "Los socios lideran directamente los procesos, lo que garantiza una asesoría integral y confidencialidad absoluta en los asuntos a nuestro cargo.",
+    "Nuestro equipo está conformado por abogados especializados en derecho privado y público, complementados con aliados estratégicos en diversas áreas jurídicas. Eso nos permite ofrecer una visión amplia y soluciones efectivas en todo el país, con tarifas fijas y costoeficientes.",
+]
+
+PRACTICE_AREAS = ["Corporativo", "Societario", "Familia", "Civil", "Laboral", "Penal",
+                  "Administrativo", "Cobros", "Propiedad horizontal"]
+
+TEAM = [
+    {"name": "Sergio Andrés Cadena", "role": "Socio fundador", "photo": "sergio-andres-cadena.jpg"},
+    {"name": "Santiago Gómez", "role": "Socio fundador", "photo": "santiago-gomez.jpg"},
 ]
