@@ -25,7 +25,8 @@ scripts/build.py                   Generador de las páginas
 ## Antes de publicar — reemplazar placeholders (en `scripts/content.py` → `FIRM`)
 
 - `whatsapp`: configurado (+57 311 397 3304)
-- `email`, `instagram`, `linkedin`: confirmar
+- `email`: configurado (gcabogadosceo@gmail.com)
+- `instagram`, `linkedin`: confirmar
 - `site_url`: dominio definitivo (canonical, Open Graph, schema.org y `sitemap.xml`)
 - Revisar con el equipo los textos de Términos y Política de privacidad.
 

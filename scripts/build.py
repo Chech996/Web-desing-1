@@ -136,11 +136,42 @@ NAV_ITEMS = [
 ]
 
 
+# Isotipo de Gómez & Cadena, vectorizado a partir del logo oficial
+# (dos trazos en ángulo de 45° que se entrelazan).
+MARK_VIEWBOX = "0 0 113.8 77.8"
+MARK_PATHS = ('<path d="M1.4 38.9 L38.4 75.9 L47.4 66.9 L19.4 38.9 L47.4 10.9 L38.4 1.9 Z"/>'
+              '<path d="M47.4 10.9 L75.4 38.9 L66.4 47.9 L47.4 28.9 L37.4 38.9 L74.9 76.4 L112.4 38.9 '
+              'L74.9 1.4 L65.4 10.9 L93.4 38.9 L65.4 66.9"/>')
+
+
+def mark(cls="", stroke=2.4):
+    """Isotipo en SVG en línea; toma el color del texto (currentColor)."""
+    return (f'<svg class="{cls}" viewBox="{MARK_VIEWBOX}" fill="none" stroke="currentColor" '
+            f'stroke-width="{stroke}" stroke-linejoin="miter" stroke-linecap="square" '
+            f'aria-hidden="true" focusable="false">{MARK_PATHS}</svg>')
+
+
+ORNAMENT = ('<svg class="ornament" viewBox="0 0 160 12" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">'
+            '<path d="M2 6H64M96 6H158" stroke-width="1"/>'
+            '<path d="M80 1.5 84.5 6 80 10.5 75.5 6Z" stroke-width="1.1"/>'
+            '<path d="M75.5 6c-3-3.5-6-3.5-8 0 2 3.5 5 3.5 8 0M84.5 6c3-3.5 6-3.5 8 0-2 3.5-5 3.5-8 0" stroke-width="1"/>'
+            '</svg>')
+
+
 def logo(pg):
-    return (f'<a class="logo" href="{pg.url("")}" aria-label="GC Legal — Inicio">'
-            '<span class="logo-mark" aria-hidden="true">GC</span>'
-            '<span class="logo-text"><span class="logo-name">GC Legal</span>'
-            '<span class="logo-sub">Gómez &amp; Cadena Abogados</span></span></a>')
+    return (f'<a class="logo" href="{pg.url("")}" aria-label="Gómez &amp; Cadena Abogados — Inicio">'
+            f'{mark("logo-mark")}'
+            '<span class="logo-text"><span class="logo-name">Gómez &amp; Cadena</span>'
+            '<span class="logo-sub">Abogados</span></span></a>')
+
+
+def brand_signature(cls=""):
+    """Versión formal del logo: isotipo, nombre, ornamento y «Abogados»."""
+    return (f'<div class="brand-sig {cls}" role="img" aria-label="Gómez &amp; Cadena Abogados">'
+            f'{mark("brand-sig-mark", 2.2)}'
+            '<span class="brand-sig-name">Gómez &amp; Cadena</span>'
+            f'{ORNAMENT}'
+            '<span class="brand-sig-sub">Abogados</span></div>')
 
 
 def header(pg, section):
@@ -249,7 +280,7 @@ def footer(pg):
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          {logo(pg)}
+          <a href="{pg.url("")}" aria-label="Gómez &amp; Cadena Abogados — Inicio">{brand_signature("is-footer")}</a>
           <p class="slogan">«{FIRM["slogan"]}»</p>
           <p>Servicios jurídicos con tarifas fijas para empresas y personas, desde Rionegro para toda Colombia.</p>
           <div class="social">
@@ -294,9 +325,10 @@ def footer(pg):
 
 
 FAVICON = ("data:image/svg+xml,"
-           + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1a2744"/>'
-                   '<rect y="56" width="64" height="8" fill="#b8862b"/><text x="32" y="41" font-family="Georgia,serif" font-size="26" '
-                   'font-weight="700" fill="#fff" text-anchor="middle">GC</text></svg>'))
+           + quote('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -22 122 122">'
+                   '<style>g{stroke:#1a2744}@media (prefers-color-scheme:dark){g{stroke:#e3b65e}}</style>'
+                   '<g fill="none" stroke-width="7" stroke-linejoin="miter" stroke-linecap="square">'
+                   + MARK_PATHS + '</g></svg>'))
 
 THEME_BOOT = ("(function(){try{var t=localStorage.getItem('gc-theme');"
               "if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();")
@@ -324,11 +356,16 @@ def layout(pg, title, desc, body, section="", schema=None):
   <meta property="og:title" content="{e(title)}">
   <meta property="og:description" content="{e(desc)}">
   <meta property="og:url" content="{pg.abs()}">
+  <meta property="og:image" content="{FIRM["site_url"]}/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gómez &amp; Cadena Abogados — Derecho a la solución">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="{FAVICON}">
   <script>{THEME_BOOT}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&amp;family=Cormorant+Garamond:wght@500;600&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap">
   <link rel="stylesheet" href="{pg.asset("css/styles.css")}?v={ASSET_VERSION}">{ld}
 </head>
 <body>
@@ -386,6 +423,7 @@ def cta_band(pg, title="¿Necesitas asesoría jurídica?",
     <section class="cta-band" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-box">
+          {mark("watermark watermark-cta", 1.4)}
           <p class="eyebrow">{eyebrow}</p>
           <h2 id="cta-title">{title}</h2>
           <p>{text}</p>
@@ -509,9 +547,10 @@ def page_home():
 
     body = f'''
     <section class="hero" aria-labelledby="hero-title">
+      {mark("watermark watermark-hero", 1.6)}
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">GC Legal · Gómez &amp; Cadena Abogados</p>
+          <p class="eyebrow">Firma de abogados · Rionegro, Antioquia</p>
           <h1 id="hero-title">Derecho a la <em>solución</em></h1>
           <p class="hero-sub">Servicios jurídicos con tarifas fijas, procesos claros y la asesoría de abogados expertos. Sin sorpresas, sin letra pequeña.</p>
           <div class="hero-ctas">
@@ -982,6 +1021,10 @@ def page_about():
         <div>
           <p class="eyebrow">Nuestra historia</p>
           <h2 id="historia-title" style="margin-top:14px">Creemos que el derecho debe resolver, no complicar</h2>
+          <div class="brand-panel">
+            {brand_signature("is-panel")}
+            <p class="brand-panel-slogan">«Derecho a la solución»</p>
+          </div>
         </div>
         <div class="prose" style="color:var(--fg-muted);font-size:1.06rem">
           <p>GC Legal nació de una convicción sencilla: muchas personas y empresas en Colombia evitan buscar un abogado porque no saben cuánto les va a costar, cuánto se va a demorar o si van a entender lo que les dicen. Esa incertidumbre termina saliendo cara.</p>

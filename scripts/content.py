@@ -17,7 +17,7 @@ FIRM = {
     "slogan": "Derecho a la solución",
     "whatsapp": "573113973304",
     "whatsapp_display": "+57 311 397 3304",
-    "email": "contacto@gclegal.co",       # ← confirmar
+    "email": "gcabogadosceo@gmail.com",
     "instagram": "https://www.instagram.com/gclegal.co",
     "instagram_handle": "@gclegal.co",
     "linkedin": "https://www.linkedin.com/company/gclegal",

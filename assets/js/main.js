@@ -114,7 +114,7 @@
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
-    window.matchMedia("(min-width: 1024px)").addEventListener("change", function (m) {
+    window.matchMedia("(min-width: 1180px)").addEventListener("change", function (m) {
       if (m.matches && body.classList.contains("drawer-open")) closeDrawer();
     });
   }
